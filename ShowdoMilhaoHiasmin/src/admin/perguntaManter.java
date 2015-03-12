@@ -8,13 +8,8 @@ package admin;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.Jogador;
 import modelo.Pergunta;
 
-/**
- *
- * @author Lais Acosta
- */
 public class perguntaManter extends javax.swing.JFrame {
     
     List<Pergunta> lista;
