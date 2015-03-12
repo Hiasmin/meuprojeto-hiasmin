@@ -45,7 +45,7 @@
                       <Component id="listagem" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
                           <Component id="jPanel1" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -129,7 +129,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botaolimpar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
-                  <Component id="botaoexluir" min="-2" max="-2" attributes="0"/>
+                  <Component id="botaoexcluir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="botaoconsultar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="botaoinserir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botaolimpar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botaoexluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoexcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botaoconsultar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -168,12 +168,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaolimparActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="botaoexluir">
+        <Component class="javax.swing.JButton" name="botaoexcluir">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Exluir"/>
+            <Property name="text" type="java.lang.String" value="Excluir"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoexluirActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoexcluirActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botaoconsultar">

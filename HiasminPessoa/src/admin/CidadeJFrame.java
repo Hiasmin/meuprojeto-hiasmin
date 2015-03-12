@@ -45,7 +45,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         botaoinserir = new javax.swing.JButton();
         botaolimpar = new javax.swing.JButton();
-        botaoexluir = new javax.swing.JButton();
+        botaoexcluir = new javax.swing.JButton();
         botaoconsultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         botaoprimeiro = new javax.swing.JButton();
@@ -79,10 +79,10 @@ public class CidadeJFrame extends javax.swing.JFrame {
             }
         });
 
-        botaoexluir.setText("Exluir");
-        botaoexluir.addActionListener(new java.awt.event.ActionListener() {
+        botaoexcluir.setText("Excluir");
+        botaoexcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoexluirActionPerformed(evt);
+                botaoexcluirActionPerformed(evt);
             }
         });
 
@@ -103,7 +103,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(botaolimpar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(botaoexluir)
+                .addComponent(botaoexcluir)
                 .addGap(18, 18, 18)
                 .addComponent(botaoconsultar)
                 .addGap(22, 22, 22))
@@ -115,7 +115,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoinserir)
                     .addComponent(botaolimpar)
-                    .addComponent(botaoexluir)
+                    .addComponent(botaoexcluir)
                     .addComponent(botaoconsultar))
                 .addContainerGap())
         );
@@ -206,7 +206,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(listagem))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 52, Short.MAX_VALUE)
+                        .addGap(0, 48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -267,7 +267,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Limpeza efetuada com sucesso!");
     }//GEN-LAST:event_botaolimparActionPerformed
 
-    private void botaoexluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexluirActionPerformed
+    private void botaoexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexcluirActionPerformed
         if (txtCodigoCidade.getText().isEmpty() == false) {
             if (lista.size() >= 0) {
                 lista.remove(lista.get(posicao));
@@ -276,7 +276,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Excluído!");
             }
         }
-    }//GEN-LAST:event_botaoexluirActionPerformed
+    }//GEN-LAST:event_botaoexcluirActionPerformed
 
     private void botaoconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconsultarActionPerformed
         String nome = JOptionPane.showInputDialog("Digite o nome da cidade a ser pesquisado: ");
@@ -417,7 +417,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoanterior;
     private javax.swing.JButton botaoconsultar;
-    private javax.swing.JButton botaoexluir;
+    private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir;
     private javax.swing.JButton botaolimpar;
     private javax.swing.JButton botaoprimeiro;

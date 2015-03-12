@@ -60,7 +60,7 @@ public class pessoaListar extends javax.swing.JFrame {
         //Percorre a listagem de pessoas
         for (Pessoa pess : lista) {
             //Isso é a linha de cada uma das três colunas (linha da tabela)
-            //Linha da oluna 0, linha da coluna 2 e linha da coluna 3
+            //Linha da coluna 0, linha da coluna 2 e linha da coluna 3
             linha[0] = pess.getCodigo();
             linha[1] = pess.getNome();
             linha[2] = pess.getSexo();
