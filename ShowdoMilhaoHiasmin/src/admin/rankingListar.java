@@ -26,19 +26,19 @@ public class rankingListar extends javax.swing.JFrame {
         Ranking r = new Ranking();
         r.setLogin("Hiasmin");
         r.setPontos(100);
-        r.setData(11/03/2015);
+        r.setData(null);
         lista.add(r);
 
         r = new Ranking();
         r.setLogin("João");
         r.setPontos(150);
-        r.setData(11/03/2015);
+        r.setData(null);
         lista.add(r);
         
         r = new Ranking();
         r.setLogin("Maria");
         r.setPontos(200);
-        r.setData(11/03/2015);
+        r.setData(null);
         lista.add(r);
 
         DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
