@@ -365,7 +365,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
         if (deu == true) {
             obj.setNome(txtNome.getText());
-            if (cbxSexo.getSelectedItem().toString().equals("Masculino")) {
+            if (cbxSexo.getSelectedItem().equals("Masculino")) {
                 obj.setSexo("Masculino");
             } else {
                 obj.setSexo("Feminino");
@@ -387,7 +387,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
             if (lista.size() >= 0) {
                 lista.remove(lista.get(posicao));
                 Limpar();
-                posicao = 0;
                 JOptionPane.showMessageDialog(null, "Excluído!");
             }
         }
@@ -398,7 +397,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
         boolean encontrou = false;
         Integer posicaoachou = 0;
         for (Pessoa pessoa : lista) {
-
             if (nome.equals(pessoa.getNome())) {
                 encontrou = true;
                 posicao = posicaoachou;
