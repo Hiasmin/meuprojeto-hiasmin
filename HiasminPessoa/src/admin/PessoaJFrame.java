@@ -399,7 +399,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
         for (Pessoa pessoa : lista) {
             if (nome.equals(pessoa.getNome())) {
                 encontrou = true;
-                posicao = posicaoachou;
                 txtCodigo.setText(pessoa.getCodigo().toString());
                 txtNome.setText(pessoa.getNome());
                 if (pessoa.getSexo().equals("Masculino")) {
