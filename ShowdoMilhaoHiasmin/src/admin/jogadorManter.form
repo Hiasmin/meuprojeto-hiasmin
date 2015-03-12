@@ -44,8 +44,8 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtLogin" alignment="0" pref="114" max="32767" attributes="0"/>
-                                  <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -206,8 +206,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtLogin">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSenha">
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -295,6 +293,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmailActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtSenha">
     </Component>
   </SubComponents>
 </Form>

@@ -48,7 +48,6 @@ public class jogadorManter extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         botaoinserir = new javax.swing.JButton();
         botaolimpar = new javax.swing.JButton();
@@ -56,6 +55,7 @@ public class jogadorManter extends javax.swing.JFrame {
         botaoconsultar = new javax.swing.JButton();
         listagem = new javax.swing.JButton();
         txtEmail = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -221,8 +221,8 @@ public class jogadorManter extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                                    .addComponent(txtSenha)
-                                    .addComponent(txtEmail)))
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtSenha)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(73, 73, 73)
                                 .addComponent(jogador)
@@ -454,6 +454,6 @@ public class jogadorManter extends javax.swing.JFrame {
     private javax.swing.JButton listagem;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }
