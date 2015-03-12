@@ -11,10 +11,10 @@ import javax.swing.JOptionPane;
 import modelo.Pergunta;
 
 public class perguntaManter extends javax.swing.JFrame {
-    
+
     List<Pergunta> lista;
     Integer posicao, ultimo;
-    
+
     /**
      * Creates new form perguntaManter
      */
@@ -357,11 +357,21 @@ public class perguntaManter extends javax.swing.JFrame {
 
     private void botaoinserir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoinserir2ActionPerformed
         Pergunta obj = new Pergunta();
-        if (txtEnunciado.getText().isEmpty() || txtA.getText().isEmpty() || txtB.getText().isEmpty() 
+        Boolean deu = false;
+        if (txtEnunciado.getText().isEmpty() || txtA.getText().isEmpty() || txtB.getText().isEmpty()
                 || txtC.getText().isEmpty() || txtD.getText().isEmpty() || cbxNivel.getSelectedIndex() == 0
                 || cbxResposta.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         } else {
+            try {
+                obj.setId(Integer.parseInt(txtID.getText()));
+                deu = true;
+            } catch (Exception ex) {
+                deu = false;
+                JOptionPane.showMessageDialog(null, "O ID só pode ser preenchido com números.");
+            }
+        }
+        if (deu == true) {
             obj.setEnunciado(txtEnunciado.getText());
             obj.setA(txtA.getText());
             obj.setB(txtB.getText());
@@ -397,7 +407,7 @@ public class perguntaManter extends javax.swing.JFrame {
         boolean encontrou = false;
         Integer posicaoachou = 0;
         for (Pergunta pergunta : lista) {
-             if (enunciado.equals(pergunta.getEnunciado())) {
+            if (enunciado.equals(pergunta.getEnunciado())) {
                 encontrou = true;
                 posicao = posicaoachou;
                 txtEnunciado.setText(pergunta.getEnunciado());
@@ -544,7 +554,7 @@ public class perguntaManter extends javax.swing.JFrame {
         cbxResposta.setSelectedIndex(0);
         txtID.setText(null);
     }
-    
+
     /**
      * @param args the command line arguments
      */

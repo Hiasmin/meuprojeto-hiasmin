@@ -5,6 +5,10 @@
  */
 package admin;
 
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Lais Acosta
@@ -159,9 +163,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        rankingListar telar = new rankingListar();
-        telar.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        telar.setVisible(true);
+        try {
+            rankingListar telar = new rankingListar();
+            telar.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            telar.setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
