@@ -2,6 +2,15 @@ package modelo;
 
 public class Jogador {
     private String login, senha, email;
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getLogin() {
         return login;
