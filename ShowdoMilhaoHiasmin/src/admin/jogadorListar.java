@@ -25,19 +25,16 @@ public class jogadorListar extends javax.swing.JFrame {
 
         Jogador j = new Jogador();
         j.setLogin("Hiasmin");
-        j.setSenha("2106");
         j.setEmail("hiasmin.a@hotmail.com");
         lista.add(j);
 
         j = new Jogador();
         j.setLogin("Maria");
-        j.setSenha("1234");
         j.setEmail("maria@hotmail.com");
         lista.add(j);
         
         j = new Jogador();
         j.setLogin("João");
-        j.setSenha("5678");
         j.setEmail("joao@hotmail.com");
         lista.add(j);
 
@@ -47,8 +44,7 @@ public class jogadorListar extends javax.swing.JFrame {
 
         for (Jogador jog : lista) {
             linha[0] = jog.getLogin();
-            linha[1] = jog.getSenha();
-            linha[2] = jog.getEmail();
+            linha[1] = jog.getEmail();
             modelo.addRow(linha);
         }  
     }
@@ -76,14 +72,14 @@ public class jogadorListar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Login", "Senha", "Email"
+                "Login", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
