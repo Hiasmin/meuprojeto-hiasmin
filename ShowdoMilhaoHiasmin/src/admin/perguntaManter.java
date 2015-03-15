@@ -33,6 +33,8 @@ public class perguntaManter extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         b = new javax.swing.JLabel();
         txtEnunciado = new javax.swing.JTextField();
         txtA = new javax.swing.JTextField();
@@ -53,7 +55,6 @@ public class perguntaManter extends javax.swing.JFrame {
         enunciado = new javax.swing.JLabel();
         c = new javax.swing.JLabel();
         txtC = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         d = new javax.swing.JLabel();
         txtD = new javax.swing.JTextField();
         nivel = new javax.swing.JLabel();
@@ -63,13 +64,18 @@ public class perguntaManter extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
 
+        jScrollPane1.setViewportView(jEditorPane1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         b.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         b.setText("B:");
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Ações"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ações", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
+        botaoinserir2.setBackground(new java.awt.Color(255, 255, 255));
+        botaoinserir2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoinserir2.setForeground(new java.awt.Color(255, 0, 0));
         botaoinserir2.setText("Inserir");
         botaoinserir2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +83,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaolimpar.setBackground(new java.awt.Color(255, 255, 255));
+        botaolimpar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaolimpar.setForeground(new java.awt.Color(255, 0, 0));
         botaolimpar.setText("Limpar");
         botaolimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +93,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaoexcluir.setBackground(new java.awt.Color(255, 255, 255));
+        botaoexcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoexcluir.setForeground(new java.awt.Color(255, 0, 0));
         botaoexcluir.setText("Excluir");
         botaoexcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +103,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaoconsultar.setBackground(new java.awt.Color(255, 255, 255));
+        botaoconsultar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoconsultar.setForeground(new java.awt.Color(255, 0, 0));
         botaoconsultar.setText("Consultar");
         botaoconsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,11 +122,11 @@ public class perguntaManter extends javax.swing.JFrame {
                 .addComponent(botaoinserir2)
                 .addGap(18, 18, 18)
                 .addComponent(botaolimpar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botaoexcluir)
                 .addGap(18, 18, 18)
                 .addComponent(botaoconsultar)
-                .addGap(22, 22, 22))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +141,12 @@ public class perguntaManter extends javax.swing.JFrame {
         );
 
         pergunta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pergunta.setForeground(new java.awt.Color(102, 0, 102));
+        pergunta.setForeground(new java.awt.Color(255, 51, 102));
         pergunta.setText("Pergunta");
 
+        listagem.setBackground(new java.awt.Color(255, 255, 255));
         listagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        listagem.setForeground(new java.awt.Color(255, 0, 0));
         listagem.setText("Ir para a listagem");
         listagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,8 +154,11 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Navegação"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navegação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
+        botaoprimeiro2.setBackground(new java.awt.Color(255, 255, 255));
+        botaoprimeiro2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoprimeiro2.setForeground(new java.awt.Color(255, 0, 0));
         botaoprimeiro2.setText("Primeiro");
         botaoprimeiro2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +166,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaoanterior.setBackground(new java.awt.Color(255, 255, 255));
+        botaoanterior.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoanterior.setForeground(new java.awt.Color(255, 0, 0));
         botaoanterior.setText("Anterior");
         botaoanterior.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,6 +176,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaoproximo.setBackground(new java.awt.Color(255, 255, 255));
+        botaoproximo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoproximo.setForeground(new java.awt.Color(255, 0, 0));
         botaoproximo.setText("Próximo");
         botaoproximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +186,9 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        botaoultimo.setBackground(new java.awt.Color(255, 255, 255));
+        botaoultimo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoultimo.setForeground(new java.awt.Color(255, 0, 0));
         botaoultimo.setText("Último");
         botaoultimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,11 +205,11 @@ public class perguntaManter extends javax.swing.JFrame {
                 .addComponent(botaoprimeiro2)
                 .addGap(18, 18, 18)
                 .addComponent(botaoanterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botaoproximo)
                 .addGap(18, 18, 18)
                 .addComponent(botaoultimo)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +220,7 @@ public class perguntaManter extends javax.swing.JFrame {
                     .addComponent(botaoanterior)
                     .addComponent(botaoproximo)
                     .addComponent(botaoultimo))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txtB.addActionListener(new java.awt.event.ActionListener() {
@@ -215,9 +244,6 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel5.setText("Opções");
-
         d.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         d.setText("D:");
 
@@ -231,14 +257,13 @@ public class perguntaManter extends javax.swing.JFrame {
         nivel.setText("Nível de dificuldade:");
 
         resp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        resp.setForeground(new java.awt.Color(0, 204, 0));
-        resp.setText("Resposta Certa: Letra");
+        resp.setText("Resposta Certa:");
 
         cbxResposta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbxResposta.setForeground(new java.awt.Color(0, 204, 0));
         cbxResposta.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "A", "B", "C", "D" }));
 
-        cbxNivel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cbxNivel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbxNivel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione", "1", "2", "3", "4", "5" }));
         cbxNivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,81 +271,81 @@ public class perguntaManter extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("ID:");
+
+        txtID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(pergunta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(listagem)
-                .addGap(36, 36, 36))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(68, 68, 68)
+                        .addComponent(enunciado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(pergunta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listagem)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(nivel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(resp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cbxResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(110, 110, 110))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(d)
                             .addComponent(c)
                             .addComponent(a)
-                            .addComponent(enunciado)
                             .addComponent(b))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEnunciado)
                             .addComponent(txtA)
                             .addComponent(txtB)
                             .addComponent(txtC)
-                            .addComponent(txtD, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nivel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbxNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(resp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbxResposta, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(127, 127, 127))
+                            .addComponent(txtD, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(169, 169, 169))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(pergunta))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(listagem)))
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listagem)
+                    .addComponent(pergunta))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enunciado)
                     .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(a)
@@ -333,11 +358,11 @@ public class perguntaManter extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(c)
                     .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(d)
                     .addComponent(txtD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(resp)
                     .addComponent(cbxResposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -345,11 +370,11 @@ public class perguntaManter extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nivel)
                     .addComponent(cbxNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -606,10 +631,11 @@ public class perguntaManter extends javax.swing.JFrame {
     private javax.swing.JComboBox cbxResposta;
     private javax.swing.JLabel d;
     private javax.swing.JLabel enunciado;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton listagem;
     private javax.swing.JLabel nivel;
     private javax.swing.JLabel pergunta;
