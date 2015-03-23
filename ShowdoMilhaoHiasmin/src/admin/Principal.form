@@ -83,6 +83,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuJogadorL">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
               <Events>
@@ -91,6 +94,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuJogadorG">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+2"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerenciar"/>
               </Properties>
               <Events>
@@ -106,6 +112,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
               <Events>
@@ -114,6 +123,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuPerguntaG">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Alt+4"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerenciar"/>
               </Properties>
               <Events>
@@ -129,6 +141,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+5"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Listar"/>
               </Properties>
               <Events>
@@ -163,13 +178,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="399" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="imagem1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="296" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+              <Component id="imagem1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="imagem1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagens/showimagem.jpg"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imagem1MouseClicked"/>
+      </Events>
+    </Component>
+  </SubComponents>
 </Form>

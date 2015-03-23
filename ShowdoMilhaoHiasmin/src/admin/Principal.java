@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar5 = new javax.swing.JMenuBar();
         jMenu9 = new javax.swing.JMenu();
         jMenu10 = new javax.swing.JMenu();
+        imagem1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuJogadorL = new javax.swing.JMenuItem();
@@ -79,8 +80,16 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        imagem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/showimagem.jpg"))); // NOI18N
+        imagem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imagem1MouseClicked(evt);
+            }
+        });
+
         jMenu1.setText("Jogador");
 
+        mnuJogadorL.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
         mnuJogadorL.setText("Listar");
         mnuJogadorL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +98,7 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(mnuJogadorL);
 
+        mnuJogadorG.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
         mnuJogadorG.setText("Gerenciar");
         mnuJogadorG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +111,7 @@ public class Principal extends javax.swing.JFrame {
 
         mnuPerguntaL.setText("Pergunta");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.ALT_MASK));
         jMenuItem3.setText("Listar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +120,7 @@ public class Principal extends javax.swing.JFrame {
         });
         mnuPerguntaL.add(jMenuItem3);
 
+        mnuPerguntaG.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_MASK));
         mnuPerguntaG.setText("Gerenciar");
         mnuPerguntaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +133,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu8.setText("Ranking");
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem1.setText("Listar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,11 +150,17 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(imagem1)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(imagem1)
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,6 +200,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void imagem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imagem1MouseClicked
+        imagem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/showimagem2.jpg")));
+    }//GEN-LAST:event_imagem1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +240,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imagem1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
