@@ -64,6 +64,7 @@ public class perguntaManter extends javax.swing.JFrame {
         cbxNivel = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        botaoatualizar = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -278,6 +279,14 @@ public class perguntaManter extends javax.swing.JFrame {
         txtID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtID.setEnabled(false);
 
+        botaoatualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoatualizar.setText("Atualizar");
+        botaoatualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoatualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -297,7 +306,7 @@ public class perguntaManter extends javax.swing.JFrame {
                         .addComponent(listagem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,25 +336,33 @@ public class perguntaManter extends javax.swing.JFrame {
                             .addComponent(txtB)
                             .addComponent(txtC)
                             .addComponent(txtD, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(173, 173, 173))))
+                        .addGap(65, 65, 65))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(botaoatualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(173, 173, 173))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listagem)
                     .addComponent(pergunta))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botaoatualizar)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enunciado)
                     .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -573,6 +590,11 @@ public class perguntaManter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxNivelActionPerformed
 
+    private void botaoatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizarActionPerformed
+        PerguntaDAO dao = new PerguntaDAO();
+        lista = dao.listar();
+    }//GEN-LAST:event_botaoatualizarActionPerformed
+
     public void Limpar() {
         txtEnunciado.setText("");
         txtA.setText("");
@@ -623,6 +645,7 @@ public class perguntaManter extends javax.swing.JFrame {
     private javax.swing.JLabel a;
     private javax.swing.JLabel b;
     private javax.swing.JButton botaoanterior;
+    private javax.swing.JButton botaoatualizar;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir2;
