@@ -10,10 +10,6 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pergunta;
 
-/**
- *
- * @author Lais Acosta
- */
 public class perguntaListar extends javax.swing.JFrame {
 
     /**

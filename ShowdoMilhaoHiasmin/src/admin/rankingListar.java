@@ -16,10 +16,6 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ranking;
 
-/**
- *
- * @author Lais Acosta
- */
 public class rankingListar extends javax.swing.JFrame {
 
     /**

@@ -10,10 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Jogador;
 
-/**
- *
- * @author Aluno
- */
 public class jogadorManter extends javax.swing.JFrame {
 
     List<Jogador> lista;
@@ -58,7 +54,6 @@ public class jogadorManter extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
-        botaoatualizar3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,14 +224,6 @@ public class jogadorManter extends javax.swing.JFrame {
             }
         });
 
-        botaoatualizar3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botaoatualizar3.setText("Atualizar");
-        botaoatualizar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoatualizar3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -247,15 +234,13 @@ public class jogadorManter extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botaoatualizar3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addGroup(layout.createSequentialGroup()
@@ -293,19 +278,14 @@ public class jogadorManter extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addComponent(botaoatualizar3)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -351,6 +331,9 @@ public class jogadorManter extends javax.swing.JFrame {
         }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
+        }
+        if (posicao == 0) {
+            botaoanterior.setEnabled(false);
         }
     }//GEN-LAST:event_botaoanteriorActionPerformed
 
@@ -421,18 +404,20 @@ public class jogadorManter extends javax.swing.JFrame {
 
     private void botaoexcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoexcluirActionPerformed
         if (txtLogin.getText().isEmpty() == false) {
-            Boolean deu = false;
             if (lista.size() >= 0) {
                 JogadorDAO dao = new JogadorDAO();
-                dao.excluir(lista.get(posicao));
-                Limpar();
-                posicao = 0;
-                JOptionPane.showMessageDialog(null, "Excluído!");
-                deu = true;
+                Boolean deucerto = dao.excluir(lista.get(posicao));
+                if (deucerto == true) {
+                    Limpar();
+                    posicao = 0;
+                    lista = dao.listar();
+                    JOptionPane.showMessageDialog(null, "Excluído!");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao excluir!");
-                deu = false;
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir!");
         }
     }//GEN-LAST:event_botaoexcluirActionPerformed
 
@@ -470,11 +455,6 @@ public class jogadorManter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void botaoatualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizar3ActionPerformed
-        JogadorDAO dao = new JogadorDAO();
-        lista = dao.listar();
-    }//GEN-LAST:event_botaoatualizar3ActionPerformed
-
     public void Limpar() {
         txtLogin.setText("");
         txtSenha.setText("");
@@ -495,16 +475,21 @@ public class jogadorManter extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(jogadorManter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jogadorManter.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(jogadorManter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jogadorManter.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(jogadorManter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jogadorManter.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(jogadorManter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(jogadorManter.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -518,10 +503,6 @@ public class jogadorManter extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoanterior;
-    private javax.swing.JButton botaoatualizar;
-    private javax.swing.JButton botaoatualizar1;
-    private javax.swing.JButton botaoatualizar2;
-    private javax.swing.JButton botaoatualizar3;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir;

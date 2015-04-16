@@ -7,15 +7,10 @@
 package admin;
 
 import dao.PessoaDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pessoa;
 
-/**
- *
- * @author Aluno
- */
 public class pessoaListar extends javax.swing.JFrame {
 
     /**

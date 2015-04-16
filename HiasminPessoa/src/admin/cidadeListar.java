@@ -6,15 +6,10 @@
 package admin;
 
 import dao.CidadeDAO;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cidade;
 
-/**
- *
- * @author Lais Acosta
- */
 public class cidadeListar extends javax.swing.JFrame {
     List<Cidade> lista;
     /**

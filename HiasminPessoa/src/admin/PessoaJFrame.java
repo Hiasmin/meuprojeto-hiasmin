@@ -10,10 +10,6 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Pessoa;
 
-/**
- *
- * @author Aluno
- */
 public class PessoaJFrame extends javax.swing.JFrame {
 
     List<Pessoa> lista;
@@ -56,7 +52,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
         botaoultimo = new javax.swing.JButton();
         cbxSexo = new javax.swing.JComboBox();
         listagem = new javax.swing.JButton();
-        botaoatualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,14 +199,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
             }
         });
 
-        botaoatualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botaoatualizar.setText("Atualizar");
-        botaoatualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoatualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,9 +226,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtId)
                                     .addComponent(txtNome)
-                                    .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(41, 41, 41)
-                                .addComponent(botaoatualizar)))
+                                    .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 17, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -252,11 +237,10 @@ public class PessoaJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pessoa)
                     .addComponent(listagem))
-                .addGap(19, 19, 19)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoatualizar))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -269,7 +253,7 @@ public class PessoaJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -338,6 +322,9 @@ public class PessoaJFrame extends javax.swing.JFrame {
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
         }
+        if (posicao == 0) {
+            botaoanterior.setEnabled(false);
+        }
     }//GEN-LAST:event_botaoanteriorActionPerformed
 
     private void botaoproximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoproximoActionPerformed
@@ -398,12 +385,18 @@ public class PessoaJFrame extends javax.swing.JFrame {
         if (txtId.getText().isEmpty() == false) {
             if (lista.size() >= 0) {
                 PessoaDAO dao = new PessoaDAO();
-                dao.excluir(lista.get(posicao));
-                Limpar();
-                JOptionPane.showMessageDialog(null, "Excluído!");
-            }  else {
+                Boolean deucerto = dao.excluir(lista.get(posicao));
+                if (deucerto == true) {
+                    Limpar();
+                    posicao = 0;
+                    lista = dao.listar();
+                    JOptionPane.showMessageDialog(null, "Excluído!");
+                }
+            } else {
                 JOptionPane.showMessageDialog(null, "Erro ao excluir!");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         }
     }//GEN-LAST:event_botaoexcluirActionPerformed
 
@@ -443,11 +436,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
         lista.setVisible(true);
         dispose();
     }//GEN-LAST:event_listagemActionPerformed
-
-    private void botaoatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizarActionPerformed
-        PessoaDAO dao = new PessoaDAO();
-        lista = dao.listar();
-    }//GEN-LAST:event_botaoatualizarActionPerformed
 
     public void Limpar() {
         txtId.setText("");
@@ -492,7 +480,6 @@ public class PessoaJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoanterior;
-    private javax.swing.JButton botaoatualizar;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir;

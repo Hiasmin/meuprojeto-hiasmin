@@ -10,10 +10,6 @@ import javax.swing.JOptionPane;
 import modelo.Cidade;
 import java.util.List;
 
-/**
- *
- * @author Aluno
- */
 public class CidadeJFrame extends javax.swing.JFrame {
 
     List<Cidade> lista;
@@ -54,7 +50,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaoproximo = new javax.swing.JButton();
         botaoultimo = new javax.swing.JButton();
         listagem = new javax.swing.JButton();
-        botaoatualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,14 +187,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
             }
         });
 
-        botaoatualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        botaoatualizar.setText("Atualizar");
-        botaoatualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoatualizarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,8 +207,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID)
                             .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoatualizar)
                         .addGap(27, 27, 27))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -237,9 +222,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoatualizar))
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -274,7 +257,7 @@ public class CidadeJFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao cadastrar!");
-        }  
+        }
     }//GEN-LAST:event_botaoinserirActionPerformed
 
     private void botaolimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaolimparActionPerformed
@@ -286,13 +269,18 @@ public class CidadeJFrame extends javax.swing.JFrame {
         if (txtID.getText().isEmpty() == false) {
             if (lista.size() >= 0) {
                 CidadeDAO dao = new CidadeDAO();
-                dao.excluir(lista.get(posicao));
-                Limpar();
-                posicao = 0;
-                JOptionPane.showMessageDialog(null, "Excluído!");
+                Boolean deucerto = dao.excluir(lista.get(posicao));
+                if (deucerto == true) {
+                    Limpar();
+                    posicao = 0;
+                    lista = dao.listar();
+                    JOptionPane.showMessageDialog(null, "Excluído!");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao excluir!");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos.");
         }
     }//GEN-LAST:event_botaoexcluirActionPerformed
 
@@ -345,9 +333,12 @@ public class CidadeJFrame extends javax.swing.JFrame {
             Cidade elemento = lista.get(posicao);
             txtID.setText(elemento.getId().toString());
             txtNomeCidade.setText(elemento.getNomecidade());
-            if (lista.size() == 1) {
-                botaoproximo.setEnabled(false);
-            }
+        }
+        if (lista.size() == 1) {
+            botaoproximo.setEnabled(false);
+        }
+        if (posicao == 0) {
+            botaoanterior.setEnabled(false);
         }
     }//GEN-LAST:event_botaoanteriorActionPerformed
 
@@ -392,11 +383,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_listagemActionPerformed
 
-    private void botaoatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizarActionPerformed
-        CidadeDAO dao = new CidadeDAO();
-        lista = dao.listar();
-    }//GEN-LAST:event_botaoatualizarActionPerformed
-
     private void Limpar() {
         txtID.setText(null);
         txtNomeCidade.setText("");
@@ -439,7 +425,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoanterior;
-    private javax.swing.JButton botaoatualizar;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir;

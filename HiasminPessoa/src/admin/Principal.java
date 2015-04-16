@@ -6,10 +6,6 @@
 
 package admin;
 
-/**
- *
- * @author Aluno
- */
 public class Principal extends javax.swing.JFrame {
 
     /**

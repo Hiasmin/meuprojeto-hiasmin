@@ -10,10 +10,6 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.Jogador;
 
-/**
- *
- * @author Lais Acosta
- */
 public class jogadorListar extends javax.swing.JFrame {
 
     /**

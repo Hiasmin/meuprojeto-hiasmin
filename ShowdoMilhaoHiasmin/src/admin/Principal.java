@@ -9,10 +9,6 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Lais Acosta
- */
 public class Principal extends javax.swing.JFrame {
 
     /**
