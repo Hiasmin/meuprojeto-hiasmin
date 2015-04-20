@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cidade;
 
 public class cidadeListar extends javax.swing.JFrame {
-    List<Cidade> lista;
+    
     /**
      * Creates new form cidadeListar
      */
