@@ -44,12 +44,13 @@ public class CidadeJFrame extends javax.swing.JFrame {
         botaolimpar = new javax.swing.JButton();
         botaoexcluir = new javax.swing.JButton();
         botaoconsultar = new javax.swing.JButton();
+        botaoatualizar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         botaoprimeiro = new javax.swing.JButton();
         botaoanterior = new javax.swing.JButton();
         botaoproximo = new javax.swing.JButton();
         botaoultimo = new javax.swing.JButton();
-        listagem = new javax.swing.JButton();
+        botaolistagem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +96,13 @@ public class CidadeJFrame extends javax.swing.JFrame {
             }
         });
 
+        botaoatualizar.setText("Atualizar");
+        botaoatualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoatualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,11 +112,13 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addComponent(botaoinserir)
                 .addGap(18, 18, 18)
                 .addComponent(botaolimpar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botaoexcluir)
                 .addGap(18, 18, 18)
                 .addComponent(botaoconsultar)
-                .addGap(22, 22, 22))
+                .addGap(18, 18, 18)
+                .addComponent(botaoatualizar)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +128,8 @@ public class CidadeJFrame extends javax.swing.JFrame {
                     .addComponent(botaoinserir)
                     .addComponent(botaolimpar)
                     .addComponent(botaoexcluir)
-                    .addComponent(botaoconsultar))
+                    .addComponent(botaoconsultar)
+                    .addComponent(botaoatualizar))
                 .addContainerGap())
         );
 
@@ -161,11 +172,11 @@ public class CidadeJFrame extends javax.swing.JFrame {
                 .addComponent(botaoprimeiro)
                 .addGap(18, 18, 18)
                 .addComponent(botaoanterior)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botaoproximo)
                 .addGap(18, 18, 18)
                 .addComponent(botaoultimo)
-                .addGap(23, 23, 23))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,14 +187,14 @@ public class CidadeJFrame extends javax.swing.JFrame {
                     .addComponent(botaoanterior)
                     .addComponent(botaoproximo)
                     .addComponent(botaoultimo))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        listagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        listagem.setText("Ir para a listagem");
-        listagem.addActionListener(new java.awt.event.ActionListener() {
+        botaolistagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaolistagem.setText("Ir para a listagem");
+        botaolistagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listagemActionPerformed(evt);
+                botaolistagemActionPerformed(evt);
             }
         });
 
@@ -192,14 +203,10 @@ public class CidadeJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(39, 39, 39)
-                        .addComponent(listagem))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
+                        .addGap(108, 108, 108)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(id)
                             .addComponent(jLabel2))
@@ -207,33 +214,43 @@ public class CidadeJFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID)
                             .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botaolistagem)
+                        .addGap(40, 40, 40))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(172, 172, 172)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listagem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(17, 17, 17)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaolistagem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(id)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(id)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -377,11 +394,36 @@ public class CidadeJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoultimoActionPerformed
 
-    private void listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagemActionPerformed
+    private void botaolistagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaolistagemActionPerformed
         cidadeListar listaci = new cidadeListar();
         listaci.setVisible(true);
         dispose();
-    }//GEN-LAST:event_listagemActionPerformed
+    }//GEN-LAST:event_botaolistagemActionPerformed
+
+    private void botaoatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizarActionPerformed
+        if(txtID.getText().isEmpty() || txtNomeCidade.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Registro não informado.");
+        }
+        else 
+        {
+            Cidade c = new Cidade();
+            c.setId(Integer.parseInt(txtID.getText()));
+            c.setNomecidade(txtNomeCidade.getText());
+           
+            CidadeDAO dao = new CidadeDAO();
+            boolean deucerto;
+            deucerto = dao.alterar(c);
+            if(deucerto == true) 
+            {
+                JOptionPane.showMessageDialog(null, "Registro cadastrado.");
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "Erro ao alterar registro.");
+            } 
+            lista = dao.listar();
+        }
+    }//GEN-LAST:event_botaoatualizarActionPerformed
 
     private void Limpar() {
         txtID.setText(null);
@@ -425,10 +467,12 @@ public class CidadeJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoanterior;
+    private javax.swing.JButton botaoatualizar;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir;
     private javax.swing.JButton botaolimpar;
+    private javax.swing.JButton botaolistagem;
     private javax.swing.JButton botaoprimeiro;
     private javax.swing.JButton botaoproximo;
     private javax.swing.JButton botaoultimo;
@@ -437,7 +481,6 @@ public class CidadeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton listagem;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNomeCidade;
     // End of variables declaration//GEN-END:variables

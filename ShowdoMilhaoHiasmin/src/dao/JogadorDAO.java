@@ -80,4 +80,28 @@ public class JogadorDAO {
         
         return retorno;
     }
+    
+    public Boolean alterar(Jogador jogador) 
+    {
+        Boolean retorno;
+        
+        String sql = "UPDATE jogador SET senha = ?, email = ? WHERE login = ?";
+        
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        
+        try 
+        {
+            pst.setString(1, jogador.getSenha());
+            pst.setString(2, jogador.getEmail());
+            pst.setString(3, jogador.getLogin());
+            pst.executeUpdate();
+            retorno = true;
+        } 
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            retorno = false;
+        }
+        return retorno;
+    }
 }

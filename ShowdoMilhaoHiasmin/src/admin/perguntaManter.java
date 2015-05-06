@@ -45,7 +45,7 @@ public class perguntaManter extends javax.swing.JFrame {
         botaoexcluir = new javax.swing.JButton();
         botaoconsultar = new javax.swing.JButton();
         pergunta = new javax.swing.JLabel();
-        listagem = new javax.swing.JButton();
+        botaolistagem = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         botaoprimeiro2 = new javax.swing.JButton();
         botaoanterior = new javax.swing.JButton();
@@ -63,7 +63,8 @@ public class perguntaManter extends javax.swing.JFrame {
         cbxResposta = new javax.swing.JComboBox();
         cbxNivel = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        botaoatualizar = new javax.swing.JButton();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -145,13 +146,13 @@ public class perguntaManter extends javax.swing.JFrame {
         pergunta.setForeground(new java.awt.Color(255, 51, 102));
         pergunta.setText("Pergunta");
 
-        listagem.setBackground(new java.awt.Color(255, 255, 255));
-        listagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        listagem.setForeground(new java.awt.Color(255, 0, 0));
-        listagem.setText("Ir para a listagem");
-        listagem.addActionListener(new java.awt.event.ActionListener() {
+        botaolistagem.setBackground(new java.awt.Color(255, 255, 255));
+        botaolistagem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaolistagem.setForeground(new java.awt.Color(255, 0, 0));
+        botaolistagem.setText("Ir para a listagem");
+        botaolistagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listagemActionPerformed(evt);
+                botaolistagemActionPerformed(evt);
             }
         });
 
@@ -275,8 +276,23 @@ public class perguntaManter extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("ID:");
 
-        txtID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtID.setEnabled(false);
+        txtId.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtId.setEnabled(false);
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
+
+        botaoatualizar.setBackground(new java.awt.Color(255, 255, 255));
+        botaoatualizar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoatualizar.setForeground(new java.awt.Color(255, 0, 0));
+        botaoatualizar.setText("Atualizar");
+        botaoatualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoatualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,16 +310,11 @@ public class perguntaManter extends javax.swing.JFrame {
                         .addGap(81, 81, 81)
                         .addComponent(pergunta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(listagem)))
+                        .addComponent(botaolistagem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -327,26 +338,35 @@ public class perguntaManter extends javax.swing.JFrame {
                             .addComponent(txtB)
                             .addComponent(txtC)
                             .addComponent(txtD, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65))))
+                        .addGap(65, 65, 65))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(38, 196, Short.MAX_VALUE)
+                .addGap(105, 105, 105)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botaoatualizar)
+                .addGap(75, 75, 75))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listagem)
+                    .addComponent(botaolistagem)
                     .addComponent(pergunta))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botaoatualizar))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enunciado)
                     .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -452,8 +472,7 @@ public class perguntaManter extends javax.swing.JFrame {
                 txtD.setText(pergunta.getD());
                 cbxNivel.setSelectedItem(pergunta.getNivel());
                 cbxResposta.setSelectedItem(pergunta.getCerta());
-                txtID.setText(pergunta.getId().toString());
-                posicao = posicaoachou;
+                txtId.setText(pergunta.getId().toString());
                 break;
             }
             posicaoachou++;
@@ -466,11 +485,11 @@ public class perguntaManter extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoconsultarActionPerformed
 
-    private void listagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listagemActionPerformed
+    private void botaolistagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaolistagemActionPerformed
         perguntaListar lista = new perguntaListar();
         lista.setVisible(true);
         dispose();
-    }//GEN-LAST:event_listagemActionPerformed
+    }//GEN-LAST:event_botaolistagemActionPerformed
 
     private void botaoprimeiro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoprimeiro2ActionPerformed
         botaoprimeiro2.setEnabled(true);
@@ -487,7 +506,7 @@ public class perguntaManter extends javax.swing.JFrame {
             txtD.setText(elemento.getD());
             cbxNivel.setSelectedItem(elemento.getNivel().toString());
             cbxResposta.setSelectedItem(elemento.getCerta());
-            txtID.setText(elemento.getId().toString());
+            txtId.setText(elemento.getId().toString());
         }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
@@ -510,7 +529,7 @@ public class perguntaManter extends javax.swing.JFrame {
             txtD.setText(elemento.getD());
             cbxNivel.setSelectedItem(elemento.getNivel().toString());
             cbxResposta.setSelectedItem(elemento.getCerta());
-            txtID.setText(elemento.getId().toString());
+            txtId.setText(elemento.getId().toString());
         }
         if (lista.size() == 1) {
             botaoproximo.setEnabled(false);
@@ -535,7 +554,7 @@ public class perguntaManter extends javax.swing.JFrame {
             txtD.setText(elemento.getD());
             cbxNivel.setSelectedItem(elemento.getNivel().toString());
             cbxResposta.setSelectedItem(elemento.getCerta());
-            txtID.setText(elemento.getId().toString());
+            txtId.setText(elemento.getId().toString());
         }
         if (lista.size() - 1 == posicao) {
             botaoproximo.setEnabled(false);
@@ -558,7 +577,7 @@ public class perguntaManter extends javax.swing.JFrame {
             txtD.setText(elemento.getD());
             cbxNivel.setSelectedItem(elemento.getNivel().toString());
             cbxResposta.setSelectedItem(elemento.getCerta());
-            txtID.setText(elemento.getId().toString());
+            txtId.setText(elemento.getId().toString());
         }
         if (lista.size() - 1 == posicao && lista.size() == 1) {
             botaoproximo.setEnabled(false);
@@ -583,6 +602,41 @@ public class perguntaManter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxNivelActionPerformed
 
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdActionPerformed
+
+    private void botaoatualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoatualizarActionPerformed
+        if(txtId.getText().isEmpty() || txtEnunciado.getText().isEmpty() || txtA.getText().isEmpty() ||
+                txtB.getText().isEmpty() || txtC.getText().isEmpty() || txtD.getText().isEmpty() ||
+                cbxResposta.getSelectedIndex() == 0 || cbxNivel.getSelectedIndex() == 0)
+        {
+            JOptionPane.showMessageDialog(null, "Registro não informado.");
+        }
+        else 
+        {
+            Pergunta p = new Pergunta();
+            p.setId(Integer.parseInt(txtId.getText()));
+            p.setEnunciado(txtEnunciado.getText());
+            p.setA(txtA.getText());
+            p.setB(txtB.getText());
+            p.setC(txtC.getText());
+            p.setD(txtD.getText());
+            p.setCerta(cbxResposta.getSelectedItem().toString());
+            p.setNivel(Integer.parseInt(cbxNivel.getSelectedItem().toString()));
+            
+            PerguntaDAO dao = new PerguntaDAO();
+            boolean deucerto;
+            deucerto = dao.alterar(p);
+            if(deucerto == true) {
+                JOptionPane.showMessageDialog(null, "Registro cadastrado.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro ao alterar registro.");
+            }
+            lista = dao.listar();
+        }
+    }//GEN-LAST:event_botaoatualizarActionPerformed
+
     public void Limpar() {
         txtEnunciado.setText("");
         txtA.setText("");
@@ -591,7 +645,7 @@ public class perguntaManter extends javax.swing.JFrame {
         txtD.setText("");
         cbxNivel.setSelectedIndex(0);
         cbxResposta.setSelectedIndex(0);
-        txtID.setText(null);
+        txtId.setText(null);
     }
 
     /**
@@ -633,10 +687,12 @@ public class perguntaManter extends javax.swing.JFrame {
     private javax.swing.JLabel a;
     private javax.swing.JLabel b;
     private javax.swing.JButton botaoanterior;
+    private javax.swing.JButton botaoatualizar;
     private javax.swing.JButton botaoconsultar;
     private javax.swing.JButton botaoexcluir;
     private javax.swing.JButton botaoinserir2;
     private javax.swing.JButton botaolimpar;
+    private javax.swing.JButton botaolistagem;
     private javax.swing.JButton botaoprimeiro2;
     private javax.swing.JButton botaoproximo;
     private javax.swing.JButton botaoultimo;
@@ -650,7 +706,6 @@ public class perguntaManter extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton listagem;
     private javax.swing.JLabel nivel;
     private javax.swing.JLabel pergunta;
     private javax.swing.JLabel resp;
@@ -659,6 +714,6 @@ public class perguntaManter extends javax.swing.JFrame {
     private javax.swing.JTextField txtC;
     private javax.swing.JTextField txtD;
     private javax.swing.JTextField txtEnunciado;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
