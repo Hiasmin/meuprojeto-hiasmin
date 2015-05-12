@@ -15,6 +15,14 @@ public class perguntaManter extends javax.swing.JFrame {
     List<Pergunta> lista;
     Integer posicao, ultimo;
 
+    public List<Pergunta> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Pergunta> lista) {
+        this.lista = lista;
+    }
+
     /**
      * Creates new form perguntaManter
      */
