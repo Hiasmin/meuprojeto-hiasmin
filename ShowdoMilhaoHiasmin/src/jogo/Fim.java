@@ -5,6 +5,8 @@
  */
 package jogo;
 
+import modelo.Audio;
+
 /**
  *
  * @author Lais Acosta
@@ -16,6 +18,8 @@ public class Fim extends javax.swing.JFrame {
      */
     public Fim() {
         initComponents();
+        Audio audio = new Audio();
+        audio.tocar("sbt.wav");
     }
 
     /**

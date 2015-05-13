@@ -8,6 +8,7 @@ package jogo;
 import dao.JogadorDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Audio;
 import modelo.Jogador;
 
 /**
@@ -25,6 +26,8 @@ public class Cadastrar extends javax.swing.JFrame {
         initComponents();
         JogadorDAO dao = new JogadorDAO();
         lista = dao.listar();
+        Audio audio = new Audio();
+        audio.tocar("welcome.wav");
     }
 
     /**

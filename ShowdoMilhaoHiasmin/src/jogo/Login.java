@@ -7,6 +7,7 @@ package jogo;
 
 import dao.JogadorDAO;
 import javax.swing.JOptionPane;
+import modelo.Audio;
 import modelo.Jogador;
 
 /**
@@ -20,6 +21,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        Audio audio = new Audio();
+        audio.tocar("welcome.wav");
     }
 
     /**

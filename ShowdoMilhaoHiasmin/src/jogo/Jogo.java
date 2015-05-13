@@ -7,6 +7,8 @@ package jogo;
 
 import dao.PerguntaDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
+import modelo.Audio;
 import modelo.Jogador;
 import modelo.Pergunta;
 
@@ -17,7 +19,7 @@ import modelo.Pergunta;
 public class Jogo extends javax.swing.JFrame {
 
     private Integer nivel;
-    
+
     private Jogador jogador;
 
     public Jogador getJogador() {
@@ -27,16 +29,19 @@ public class Jogo extends javax.swing.JFrame {
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
-    
+
     List<Pergunta> perguntas;
     Pergunta perguntaAtual;
-    
+
     /**
      * Creates new form Pergunta
      */
     public Jogo() {
         initComponents();
         nivel = 1;
+        Audio audio = new Audio();
+        audio.tocar("abertura.wav");
+        //audio.parar();
     }
 
     /**
@@ -48,19 +53,9 @@ public class Jogo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
-        buttonGroup8 = new javax.swing.ButtonGroup();
-        buttonGroup9 = new javax.swing.ButtonGroup();
-        buttonGroup10 = new javax.swing.ButtonGroup();
-        buttonGroup11 = new javax.swing.ButtonGroup();
+        grupodebotoes = new javax.swing.ButtonGroup();
         jLabel8 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblPergunta = new javax.swing.JLabel();
         txtEnunciado = new javax.swing.JLabel();
         txtA = new javax.swing.JRadioButton();
         txtB = new javax.swing.JRadioButton();
@@ -80,7 +75,7 @@ public class Jogo extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        lblJogador = new javax.swing.JLabel();
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,13 +87,14 @@ public class Jogo extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("PERGUNTA");
+        lblPergunta.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblPergunta.setForeground(new java.awt.Color(0, 0, 102));
+        lblPergunta.setText("PERGUNTA");
 
         txtEnunciado.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtEnunciado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        grupodebotoes.add(txtA);
         txtA.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -111,6 +107,7 @@ public class Jogo extends javax.swing.JFrame {
             }
         });
 
+        grupodebotoes.add(txtB);
         txtB.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,8 +115,10 @@ public class Jogo extends javax.swing.JFrame {
             }
         });
 
+        grupodebotoes.add(txtC);
         txtC.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
 
+        grupodebotoes.add(txtD);
         txtD.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,9 +266,9 @@ public class Jogo extends javax.swing.JFrame {
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel6.setText("Jogador:");
+        lblJogador.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblJogador.setForeground(new java.awt.Color(0, 0, 102));
+        lblJogador.setText("Jogador:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,9 +293,9 @@ public class Jogo extends javax.swing.JFrame {
                             .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(jLabel1)
+                        .addComponent(lblPergunta)
                         .addGap(107, 107, 107)
-                        .addComponent(jLabel6)
+                        .addComponent(lblJogador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
@@ -316,8 +315,8 @@ public class Jogo extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel6))
+                                .addComponent(lblPergunta)
+                                .addComponent(lblJogador))
                             .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -363,12 +362,12 @@ public class Jogo extends javax.swing.JFrame {
     }//GEN-LAST:event_botaocartasActionPerformed
 
     private void botaoconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconfirmarActionPerformed
-            
+        String opcao = grupodebotoes.getSelection().toString();
     }//GEN-LAST:event_botaoconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lblNome.setText(jogador.getLogin());  
-        
+        lblNome.setText(jogador.getLogin());
+
         PerguntaDAO dao = new PerguntaDAO();
         perguntas = dao.listarNivel(nivel);
         perguntaAtual = perguntas.get(0);
@@ -387,10 +386,10 @@ public class Jogo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -401,32 +400,21 @@ public static void main(String args[]) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } 
-
-catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Jogo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -446,30 +434,20 @@ catch (javax.swing.UnsupportedLookAndFeelException ex) {
     private javax.swing.JButton botaoconfirmar;
     private javax.swing.JButton botaoparar;
     private javax.swing.JButton botaopular;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup10;
-    private javax.swing.ButtonGroup buttonGroup11;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
-    private javax.swing.ButtonGroup buttonGroup8;
-    private javax.swing.ButtonGroup buttonGroup9;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.ButtonGroup grupodebotoes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblJogador;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblPergunta;
     private javax.swing.JRadioButton txtA;
     private javax.swing.JRadioButton txtB;
     private javax.swing.JRadioButton txtC;
