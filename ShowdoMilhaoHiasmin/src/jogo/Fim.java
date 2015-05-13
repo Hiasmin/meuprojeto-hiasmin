@@ -29,6 +29,12 @@ public class Fim extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        botaojogardenovo = new javax.swing.JButton();
+        voceganhou = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        talvalor = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,32 +44,87 @@ public class Fim extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/20141214_205822.png"))); // NOI18N
 
+        botaojogardenovo.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        botaojogardenovo.setForeground(new java.awt.Color(0, 0, 102));
+        botaojogardenovo.setText("Jogar Novamente");
+        botaojogardenovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaojogardenovoActionPerformed(evt);
+            }
+        });
+
+        voceganhou.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        voceganhou.setForeground(new java.awt.Color(0, 0, 102));
+        voceganhou.setText("Você ganhou ");
+
+        talvalor.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        talvalor.setForeground(new java.awt.Color(0, 0, 102));
+        talvalor.setText("$$");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/showdomilhao3.jpg"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addGap(203, 203, 203)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel1)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(voceganhou)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(talvalor))
+                                .addComponent(botaojogardenovo, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel1)))))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel2)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(talvalor)
+                            .addComponent(voceganhou))
+                        .addGap(22, 22, 22)
+                        .addComponent(botaojogardenovo)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botaojogardenovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaojogardenovoActionPerformed
+        Login l = new Login();
+        l.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botaojogardenovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,7 +162,13 @@ public class Fim extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaojogardenovo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel talvalor;
+    private javax.swing.JLabel voceganhou;
     // End of variables declaration//GEN-END:variables
 }

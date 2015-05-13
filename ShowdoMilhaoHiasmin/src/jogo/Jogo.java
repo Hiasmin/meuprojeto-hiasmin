@@ -5,8 +5,8 @@
  */
 package jogo;
 
-import admin.perguntaManter;
 import dao.PerguntaDAO;
+import java.util.List;
 import modelo.Jogador;
 import modelo.Pergunta;
 
@@ -15,7 +15,9 @@ import modelo.Pergunta;
  * @author Lais Acosta
  */
 public class Jogo extends javax.swing.JFrame {
-   
+
+    private Integer nivel;
+    
     private Jogador jogador;
 
     public Jogador getJogador() {
@@ -25,12 +27,16 @@ public class Jogo extends javax.swing.JFrame {
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
-
+    
+    List<Pergunta> perguntas;
+    Pergunta perguntaAtual;
+    
     /**
      * Creates new form Pergunta
      */
     public Jogo() {
         initComponents();
+        nivel = 1;
     }
 
     /**
@@ -94,6 +100,16 @@ public class Jogo extends javax.swing.JFrame {
         txtEnunciado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtA.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        txtA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtAMouseClicked(evt);
+            }
+        });
+        txtA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAActionPerformed(evt);
+            }
+        });
 
         txtB.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtB.addActionListener(new java.awt.event.ActionListener() {
@@ -343,33 +359,38 @@ public class Jogo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBActionPerformed
 
     private void botaocartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaocartasActionPerformed
-        
+
     }//GEN-LAST:event_botaocartasActionPerformed
 
     private void botaoconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconfirmarActionPerformed
-        
+            
     }//GEN-LAST:event_botaoconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lblNome.setText(jogador.getLogin());
-        perguntaManter pm = new perguntaManter();
-        Integer x = (int) (0 + Math.random() * pm.getLista().size());
-        for (Pergunta pergunta : pm.getLista()) {
-            if (x == (pergunta.getId())) {
-                txtEnunciado.setText(pergunta.getEnunciado());
-                txtA.setText(pergunta.getA());
-                txtB.setText(pergunta.getB());
-                txtC.setText(pergunta.getC());
-                txtD.setText(pergunta.getD());
-                break;
-            }
-        }
+        lblNome.setText(jogador.getLogin());  
+        
+        PerguntaDAO dao = new PerguntaDAO();
+        perguntas = dao.listarNivel(nivel);
+        perguntaAtual = perguntas.get(0);
+        txtEnunciado.setText(perguntaAtual.getEnunciado());
+        txtA.setText(perguntaAtual.getA());
+        txtB.setText(perguntaAtual.getB());
+        txtC.setText(perguntaAtual.getC());
+        txtD.setText(perguntaAtual.getD());
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void txtAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAMouseClicked
+        //tem certeza q é essa resposta?-som-botar em todos os coisa
+    }//GEN-LAST:event_txtAMouseClicked
+
+    private void txtAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAActionPerformed
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -380,16 +401,32 @@ public class Jogo extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Jogo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Jogo.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Jogo.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

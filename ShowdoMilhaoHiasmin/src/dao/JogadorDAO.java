@@ -123,4 +123,37 @@ public class JogadorDAO {
         return retorno;
     }
     
+    public Boolean consultar(String login)
+    {
+        List<Jogador> lista = new ArrayList<Jogador>();
+        String sql = "SELECT * FROM JOGADOR";
+        Boolean retorno = null;
+        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+        try 
+        {        
+            ResultSet res = pst.executeQuery();
+            while(res.next())
+            {
+                Jogador jogador = new Jogador();
+                jogador.setLogin(res.getString("login"));
+                jogador.setSenha(res.getString("senha"));
+                jogador.setEmail(res.getString("email"));
+                lista.add(jogador);
+            }
+            for (Jogador jogador : lista) {
+            if (login.equals(jogador.getLogin())) {
+                retorno = true;
+                break;
+            } else {
+                retorno = false;
+                break;
+            }
+            }  
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(JogadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
 }

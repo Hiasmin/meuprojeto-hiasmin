@@ -177,6 +177,10 @@
           <Font name="Segoe UI" size="18" style="2"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtAMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="txtB">
       <Properties>
