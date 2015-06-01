@@ -5,21 +5,31 @@
  */
 package jogo;
 
+import dao.RankingDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import modelo.Audio;
+import modelo.JogoCompleto;
+import modelo.Ranking;
 
 /**
  *
  * @author Lais Acosta
  */
 public class Fim extends javax.swing.JFrame {
-
+    JogoCompleto completo;
+    Audio audio = new Audio();
+       
     /**
      * Creates new form Fim
      */
     public Fim() {
         initComponents();
-        Audio audio = new Audio();
-        audio.tocar("sbt.wav");
+        audio.tocar("sbt.wav");  
     }
 
     /**
@@ -31,25 +41,28 @@ public class Fim extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblfim = new javax.swing.JLabel();
         botaojogardenovo = new javax.swing.JButton();
         voceganhou = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        talvalor = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        listagem = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        valor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel1.setText("FIM");
+        lblfim.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        lblfim.setForeground(new java.awt.Color(255, 0, 0));
+        lblfim.setText("FIM DE JOGO");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/20141214_205822.png"))); // NOI18N
-
-        botaojogardenovo.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        botaojogardenovo.setForeground(new java.awt.Color(0, 0, 102));
+        botaojogardenovo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        botaojogardenovo.setForeground(new java.awt.Color(255, 0, 0));
         botaojogardenovo.setText("Jogar Novamente");
         botaojogardenovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,68 +70,106 @@ public class Fim extends javax.swing.JFrame {
             }
         });
 
-        voceganhou.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        voceganhou.setForeground(new java.awt.Color(0, 0, 102));
+        voceganhou.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        voceganhou.setForeground(new java.awt.Color(255, 0, 0));
         voceganhou.setText("Você ganhou ");
 
-        talvalor.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        talvalor.setForeground(new java.awt.Color(0, 0, 102));
-        talvalor.setText("$$");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/showimagem.jpg"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/showdomilhao3.jpg"))); // NOI18N
+        listagem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listagem", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Login", "Pontos", "Data"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tabela);
+
+        javax.swing.GroupLayout listagemLayout = new javax.swing.GroupLayout(listagem);
+        listagem.setLayout(listagemLayout);
+        listagemLayout.setHorizontalGroup(
+            listagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listagemLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        listagemLayout.setVerticalGroup(
+            listagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listagemLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        valor.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        valor.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(voceganhou)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(talvalor))
-                                .addComponent(botaojogardenovo, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel1)))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                                .addGap(78, 78, 78)
+                                .addComponent(lblfim))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(voceganhou)
+                                .addGap(7, 7, 7)
+                                .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(botaojogardenovo)
+                        .addGap(121, 121, 121)))
+                .addComponent(listagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(talvalor)
-                            .addComponent(voceganhou))
+                        .addGap(21, 21, 21)
+                        .addComponent(lblfim)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(voceganhou)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(valor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(3, 3, 3)))
+                        .addGap(18, 18, 18)
+                        .addComponent(botaojogardenovo))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(botaojogardenovo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)))
+                        .addComponent(listagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -127,8 +178,50 @@ public class Fim extends javax.swing.JFrame {
     private void botaojogardenovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaojogardenovoActionPerformed
         Login l = new Login();
         l.setVisible(true);
-        dispose();
+        audio.parar();
+        
+        this.setVisible(false);
     }//GEN-LAST:event_botaojogardenovoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(completo.getGanhos()==0){
+            valor.setText("Nada");
+        } else {
+            valor.setText("R$: " + completo.getGanhos().toString()+",00");
+        }
+        
+        RankingDAO dao = new RankingDAO();
+                
+        /*
+        Ranking ranking = new Ranking();
+
+        String datahora = "12-09-2015 11:53 PM";
+        DateFormat formatado = new SimpleDateFormat("dd-MM-yyyy hh:mm aa");
+        Date data = formatado.parse(datahora);
+        
+        ranking.setJogador(completo.getJogador());
+        ranking.setPontos(completo.getGanhos());
+        ranking.setData(null);
+        
+        dao.inserir(ranking);
+        */
+        
+        List<Ranking> lista = new ArrayList<Ranking>();
+        
+        lista = dao.listar();
+        
+        DefaultTableModel modelo = (DefaultTableModel)tabela.getModel();
+        
+        Object[] linha = new Object[modelo.getColumnCount()];
+
+        for (Ranking ran : lista) {
+            linha[0] = ran.getJogador().getLogin();
+            linha[1] = ran.getPontos();
+            linha[2] = ran.getData();
+            modelo.addRow(linha);
+        }  
+       
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -168,11 +261,11 @@ public class Fim extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaojogardenovo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel talvalor;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblfim;
+    private javax.swing.JPanel listagem;
+    private javax.swing.JTable tabela;
+    private javax.swing.JLabel valor;
     private javax.swing.JLabel voceganhou;
     // End of variables declaration//GEN-END:variables
 }

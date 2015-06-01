@@ -114,6 +114,7 @@ public class PerguntaDAO {
                 p.setB(res.getString("b"));
                 p.setC(res.getString("c"));
                 p.setD(res.getString("d"));
+                p.setCerta(res.getString("certa"));
                 retorno.add(p);
             }
         } catch (Exception ex) {

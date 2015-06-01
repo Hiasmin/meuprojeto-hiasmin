@@ -11,16 +11,19 @@ import javax.swing.JOptionPane;
 import modelo.Audio;
 import modelo.Jogador;
 import modelo.Pergunta;
+import modelo.JogoCompleto;
 
-/**
- *
- * @author Lais Acosta
- */
 public class Jogo extends javax.swing.JFrame {
 
+    Integer g = 0, valoracertar, valorerrar, agora;
+    private Boolean acertou = false;
     private Integer nivel;
-
+    private Integer premio;
     private Jogador jogador;
+    private JogoCompleto completo;
+    List<Pergunta> perguntas;
+    Pergunta perguntaAtual;
+    //ButtonGroup grupodebotoes;
 
     public Jogador getJogador() {
         return jogador;
@@ -30,18 +33,14 @@ public class Jogo extends javax.swing.JFrame {
         this.jogador = jogador;
     }
 
-    List<Pergunta> perguntas;
-    Pergunta perguntaAtual;
-
-    /**
-     * Creates new form Pergunta
-     */
     public Jogo() {
         initComponents();
         nivel = 1;
-        Audio audio = new Audio();
-        audio.tocar("abertura.wav");
-        //audio.parar();
+        //grupodebotoes = new ButtonGroup();
+        //grupodebotoes.add(txtA);
+        //grupodebotoes.add(txtB);
+        //grupodebotoes.add(txtC);
+        //grupodebotoes.add(txtD);
     }
 
     /**
@@ -55,30 +54,47 @@ public class Jogo extends javax.swing.JFrame {
 
         grupodebotoes = new javax.swing.ButtonGroup();
         jLabel8 = new javax.swing.JLabel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         lblPergunta = new javax.swing.JLabel();
         txtEnunciado = new javax.swing.JLabel();
-        txtA = new javax.swing.JRadioButton();
-        txtB = new javax.swing.JRadioButton();
-        txtC = new javax.swing.JRadioButton();
-        txtD = new javax.swing.JRadioButton();
+        rdbA = new javax.swing.JRadioButton();
+        rdbB = new javax.swing.JRadioButton();
+        rdbC = new javax.swing.JRadioButton();
+        rdbD = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         botaoparar = new javax.swing.JButton();
         botaoconfirmar = new javax.swing.JButton();
         botaopular = new javax.swing.JButton();
         botaocartas = new javax.swing.JButton();
+        botaoplacas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        errar = new javax.swing.JTextField();
+        parar = new javax.swing.JTextField();
+        acertar = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
         lblJogador = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblNivel = new javax.swing.JLabel();
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -94,48 +110,52 @@ public class Jogo extends javax.swing.JFrame {
         txtEnunciado.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         txtEnunciado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        grupodebotoes.add(txtA);
-        txtA.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        txtA.addMouseListener(new java.awt.event.MouseAdapter() {
+        grupodebotoes.add(rdbA);
+        rdbA.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        rdbA.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtAMouseClicked(evt);
+                rdbAMouseClicked(evt);
             }
         });
-        txtA.addActionListener(new java.awt.event.ActionListener() {
+        rdbA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAActionPerformed(evt);
-            }
-        });
-
-        grupodebotoes.add(txtB);
-        txtB.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        txtB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBActionPerformed(evt);
+                rdbAActionPerformed(evt);
             }
         });
 
-        grupodebotoes.add(txtC);
-        txtC.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-
-        grupodebotoes.add(txtD);
-        txtD.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        txtD.addActionListener(new java.awt.event.ActionListener() {
+        grupodebotoes.add(rdbB);
+        rdbB.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        rdbB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDActionPerformed(evt);
+                rdbBActionPerformed(evt);
+            }
+        });
+
+        grupodebotoes.add(rdbC);
+        rdbC.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        rdbC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbCActionPerformed(evt);
+            }
+        });
+
+        grupodebotoes.add(rdbD);
+        rdbD.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        rdbD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdbDActionPerformed(evt);
             }
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/jogador.jpg"))); // NOI18N
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         botaoparar.setBackground(new java.awt.Color(255, 255, 255));
-        botaoparar.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        botaoparar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         botaoparar.setForeground(new java.awt.Color(255, 0, 0));
-        botaoparar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/stop.png"))); // NOI18N
-        botaoparar.setText("Parar");
+        botaoparar.setText("PARAR");
         botaoparar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaopararActionPerformed(evt);
@@ -143,10 +163,9 @@ public class Jogo extends javax.swing.JFrame {
         });
 
         botaoconfirmar.setBackground(new java.awt.Color(255, 255, 255));
-        botaoconfirmar.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        botaoconfirmar.setForeground(new java.awt.Color(0, 204, 0));
-        botaoconfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ok.png"))); // NOI18N
-        botaoconfirmar.setText("Confirmar");
+        botaoconfirmar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoconfirmar.setForeground(new java.awt.Color(255, 0, 0));
+        botaoconfirmar.setText("CONFIRMAR");
         botaoconfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoconfirmarActionPerformed(evt);
@@ -154,19 +173,29 @@ public class Jogo extends javax.swing.JFrame {
         });
 
         botaopular.setBackground(new java.awt.Color(255, 255, 255));
-        botaopular.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        botaopular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/seta.jpg"))); // NOI18N
-        botaopular.setText("Pular");
+        botaopular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaopular.setForeground(new java.awt.Color(255, 0, 0));
+        botaopular.setText("PULAR");
+        botaopular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaopularActionPerformed(evt);
+            }
+        });
 
         botaocartas.setBackground(new java.awt.Color(255, 255, 255));
-        botaocartas.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        botaocartas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cartas.jpg"))); // NOI18N
-        botaocartas.setText("Cartas");
+        botaocartas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaocartas.setForeground(new java.awt.Color(255, 0, 0));
+        botaocartas.setText("CARTAS");
         botaocartas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaocartasActionPerformed(evt);
             }
         });
+
+        botaoplacas.setBackground(new java.awt.Color(255, 255, 255));
+        botaoplacas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        botaoplacas.setForeground(new java.awt.Color(255, 0, 0));
+        botaoplacas.setText("PLACAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -181,6 +210,8 @@ public class Jogo extends javax.swing.JFrame {
                 .addComponent(botaopular)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaocartas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botaoplacas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -191,39 +222,46 @@ public class Jogo extends javax.swing.JFrame {
                     .addComponent(botaoparar)
                     .addComponent(botaoconfirmar)
                     .addComponent(botaopular)
-                    .addComponent(botaocartas))
+                    .addComponent(botaocartas)
+                    .addComponent(botaoplacas))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 153));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Errar:");
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("ERRAR:");
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 102));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Parar:");
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel4.setText("PARAR:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Acertar:");
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("ACERTAR:");
 
-        jTextField1.setBackground(new java.awt.Color(153, 153, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setEnabled(false);
+        errar.setBackground(new java.awt.Color(0, 0, 153));
+        errar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        errar.setForeground(new java.awt.Color(255, 255, 255));
+        errar.setEnabled(false);
 
-        jTextField2.setBackground(new java.awt.Color(153, 153, 255));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setEnabled(false);
+        parar.setBackground(new java.awt.Color(0, 0, 153));
+        parar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        parar.setForeground(new java.awt.Color(255, 255, 255));
+        parar.setEnabled(false);
+        parar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pararActionPerformed(evt);
+            }
+        });
 
-        jTextField3.setBackground(new java.awt.Color(153, 153, 255));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setEnabled(false);
+        acertar.setBackground(new java.awt.Color(0, 0, 153));
+        acertar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        acertar.setForeground(new java.awt.Color(255, 255, 255));
+        acertar.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -235,15 +273,15 @@ public class Jogo extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(errar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                        .addComponent(acertar, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2)))
+                        .addComponent(parar)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -252,92 +290,103 @@ public class Jogo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(errar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(parar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(acertar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
-        lblNome.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
         lblJogador.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblJogador.setForeground(new java.awt.Color(0, 0, 102));
         lblJogador.setText("Jogador:");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setText("Nível:");
+
+        lblNivel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(20, 20, 20))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(lblPergunta)
-                        .addGap(107, 107, 107)
-                        .addComponent(lblJogador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(66, 66, 66))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rdbC, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rdbD, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(43, 43, 43)
+                            .addComponent(lblPergunta)
+                            .addGap(74, 74, 74)
+                            .addComponent(lblJogador)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(rdbB, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rdbA, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(50, 50, 50)
+                            .addComponent(jLabel2))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblPergunta)
                                 .addComponent(lblJogador))
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(txtA)
-                        .addGap(11, 11, 11))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)))
+                        .addComponent(lblNivel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtB)
-                        .addGap(33, 33, 33)
-                        .addComponent(txtC)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtD)
-                        .addGap(18, 18, 18)
+                        .addComponent(txtEnunciado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(rdbA)
+                        .addGap(30, 30, 30)
+                        .addComponent(rdbB))
+                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(rdbC)
+                        .addGap(34, 34, 34)
+                        .addComponent(rdbD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -346,45 +395,165 @@ public class Jogo extends javax.swing.JFrame {
     private void botaopararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaopararActionPerformed
         Fim f = new Fim();
         f.setVisible(true);
+        completo.setGanhos(g);
+        f.completo = completo;
         dispose();
     }//GEN-LAST:event_botaopararActionPerformed
 
-    private void txtDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDActionPerformed
+    private void rdbDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbDActionPerformed
+        Audio a = new Audio();
+        a.tocar("certeza.wav");
+    }//GEN-LAST:event_rdbDActionPerformed
 
-    private void txtBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBActionPerformed
+    private void rdbBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbBActionPerformed
+        Audio a = new Audio();
+        a.tocar("certeza.wav");    }//GEN-LAST:event_rdbBActionPerformed
 
     private void botaocartasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaocartasActionPerformed
 
     }//GEN-LAST:event_botaocartasActionPerformed
 
     private void botaoconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconfirmarActionPerformed
-        String opcao = grupodebotoes.getSelection().toString();
+
+        String op = null;
+
+        if (rdbA.isSelected() == true) {
+            op = "A";
+        } else if (rdbB.isSelected() == true) {
+            op = "B";
+        } else if (rdbC.isSelected() == true) {
+            op = "C";
+        } else if (rdbD.isSelected() == true) {
+            op = "D";
+        }
+
+        if (op.equals(perguntaAtual.getCerta())) {
+            acertou = true;
+            Audio audio = new Audio();
+            audio.tocar("certa.wav");
+            JOptionPane.showMessageDialog(null, "Resposta Certa!");
+        } else {
+            acertou = false;
+            JOptionPane.showMessageDialog(null, "Resposta Errada.");
+        }
+
+        if (acertou == true) {
+            g = completo.getGanhos() + premio;
+        } else if (acertou == false) {
+            Fim f = new Fim();
+            f.setVisible(true);
+            this.setVisible(false);
+            f.completo = completo;
+        }
+
+        PerguntaDAO dao = new PerguntaDAO();
+
+        valoracertar = premio + g;
+        valorerrar = g / 2;
+
+        if (acertou == true) {
+            completo.setGanhos(valoracertar);
+        } else if (acertou == false) {
+            completo.setGanhos(valorerrar);
+        }
+
+        perguntas.remove(0);
+
+        if (perguntas.size() == 0) {
+            nivel++;
+            premio = premio * nivel;
+            if (nivel == 3) {
+                Fim f = new Fim();
+                completo.setGanhos(g);
+                f.completo = completo;
+                f.setVisible(true);
+                this.setVisible(false);
+                return;
+            }
+            perguntas = dao.listarNivel(nivel);
+        } else {
+            perguntaAtual = perguntas.get(0);
+            txtEnunciado.setText(perguntaAtual.getEnunciado());
+            rdbA.setText(perguntaAtual.getA());
+            rdbB.setText(perguntaAtual.getB());
+            rdbC.setText(perguntaAtual.getC());
+            rdbD.setText(perguntaAtual.getD());
+            lblNivel.setText(nivel.toString());
+
+            acertar.setText(valoracertar.toString());
+            errar.setText(valorerrar.toString());
+            parar.setText(g.toString());
+
+            grupodebotoes.clearSelection();
+        }
     }//GEN-LAST:event_botaoconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lblNome.setText(jogador.getLogin());
+        //Começar o jogo
+        completo = new JogoCompleto();
+        completo.setJogador(jogador);
 
+        lblNome.setText(jogador.getLogin());
         PerguntaDAO dao = new PerguntaDAO();
+        premio = 2500;
         perguntas = dao.listarNivel(nivel);
         perguntaAtual = perguntas.get(0);
         txtEnunciado.setText(perguntaAtual.getEnunciado());
-        txtA.setText(perguntaAtual.getA());
-        txtB.setText(perguntaAtual.getB());
-        txtC.setText(perguntaAtual.getC());
-        txtD.setText(perguntaAtual.getD());
+        rdbA.setText(perguntaAtual.getA());
+        rdbB.setText(perguntaAtual.getB());
+        rdbC.setText(perguntaAtual.getC());
+        rdbD.setText(perguntaAtual.getD());
+        lblNivel.setText(nivel.toString());
+
+        errar.setText("0");
+        acertar.setText(premio.toString());
+        parar.setText("0");
+
     }//GEN-LAST:event_formWindowOpened
 
-    private void txtAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAMouseClicked
-        //tem certeza q é essa resposta?-som-botar em todos os coisa
-    }//GEN-LAST:event_txtAMouseClicked
+    private void rdbAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbAMouseClicked
+        Audio a = new Audio();
+        a.tocar("certeza2.wav");
+    }//GEN-LAST:event_rdbAMouseClicked
 
-    private void txtAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAActionPerformed
+    private void rdbAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAActionPerformed
+    }//GEN-LAST:event_rdbAActionPerformed
+
+    private void botaopularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaopularActionPerformed
+        perguntas.remove(0);
+        PerguntaDAO dao = new PerguntaDAO();
+        if (perguntas.size() == 0) {
+            nivel++;
+            premio = premio * nivel;
+            if (nivel == 3) {
+                Fim f = new Fim();
+                f.completo = completo;
+                f.setVisible(true);
+                this.setVisible(false);
+                return;
+            }
+            perguntas = dao.listarNivel(nivel);
+        } else {
+            perguntaAtual = perguntas.get(0);
+            txtEnunciado.setText(perguntaAtual.getEnunciado());
+            rdbA.setText(perguntaAtual.getA());
+            rdbB.setText(perguntaAtual.getB());
+            rdbC.setText(perguntaAtual.getC());
+            rdbD.setText(perguntaAtual.getD());
+            lblNivel.setText(nivel.toString());
+            botaopular.setEnabled(false);
+        }
+    }//GEN-LAST:event_botaopularActionPerformed
+
+    private void pararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pararActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pararActionPerformed
+
+    private void rdbCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbCActionPerformed
+        Audio a = new Audio();
+        a.tocar("certeza2.wav");
+    }//GEN-LAST:event_rdbCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,11 +599,16 @@ public class Jogo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField acertar;
     private javax.swing.JButton botaocartas;
     private javax.swing.JButton botaoconfirmar;
     private javax.swing.JButton botaoparar;
+    private javax.swing.JButton botaoplacas;
     private javax.swing.JButton botaopular;
+    private javax.swing.JTextField errar;
     private javax.swing.ButtonGroup grupodebotoes;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -442,16 +616,15 @@ public class Jogo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblJogador;
+    private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPergunta;
-    private javax.swing.JRadioButton txtA;
-    private javax.swing.JRadioButton txtB;
-    private javax.swing.JRadioButton txtC;
-    private javax.swing.JRadioButton txtD;
+    private javax.swing.JTextField parar;
+    private javax.swing.JRadioButton rdbA;
+    private javax.swing.JRadioButton rdbB;
+    private javax.swing.JRadioButton rdbC;
+    private javax.swing.JRadioButton rdbD;
     private javax.swing.JLabel txtEnunciado;
     // End of variables declaration//GEN-END:variables
 }

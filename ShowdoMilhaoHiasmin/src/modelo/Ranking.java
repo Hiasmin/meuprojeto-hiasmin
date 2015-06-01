@@ -5,8 +5,9 @@ import java.util.Date;
 
 public class Ranking {
     private Jogador jogador;
-    private Integer pontos, id;
+    private Integer id;
     private Date data;
+    private Integer pontos;
 
     public Ranking(){
         jogador = new Jogador();
