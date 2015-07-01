@@ -170,7 +170,7 @@ public class Fim extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if (completo.getGanhos() == 0) {
-            valor.setText("Você ganhou nada.");
+            valor.setText("Você perdeu tudo.");
         } else if (completo.getGanhos() == 1000000) {
             valor.setText("VOCÊ GANHOU R$ 1.000.000!!!");
         } else {

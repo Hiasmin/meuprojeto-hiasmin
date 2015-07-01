@@ -15,7 +15,7 @@ import modelo.Pergunta;
 import modelo.JogoCompleto;
 
 public class Jogo extends javax.swing.JFrame {
-
+    
     Integer agora = 0, valoracertar, valorerrar, nivel, clique = 0, premio;
     private Boolean acertou = false;
     private Jogador jogador;
@@ -23,32 +23,32 @@ public class Jogo extends javax.swing.JFrame {
     List<Pergunta> perguntas;
     Pergunta perguntaAtual;
     static Integer h;
-
+    
     public static Integer getH() {
         return h;
     }
-
+    
     public static void setH(Integer h) {
         Jogo.h = h;
     }
-
+    
     public Jogador getJogador() {
         return jogador;
     }
-
+    
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
     static boolean cartas = false;
-
+    
     public static boolean isCartas() {
         return cartas;
     }
-
+    
     public static void setCartas(boolean cartas) {
         Jogo.cartas = cartas;
     }
-
+    
     public Jogo() {
         initComponents();
         nivel = 1;
@@ -434,11 +434,11 @@ public class Jogo extends javax.swing.JFrame {
                 && rdbD.isSelected() == false) {
             JOptionPane.showMessageDialog(rootPane, "Selecione uma opção!");
         } else {
-
+            
             clique++;
-
+            
             String op = null;
-
+            
             if (rdbA.isSelected() == true) {
                 op = "A";
             } else if (rdbB.isSelected() == true) {
@@ -448,7 +448,7 @@ public class Jogo extends javax.swing.JFrame {
             } else if (rdbD.isSelected() == true) {
                 op = "D";
             }
-
+            
             if (op.equals(perguntaAtual.getCerta())) {
                 acertou = true;
                 Audio audio = new Audio();
@@ -460,20 +460,18 @@ public class Jogo extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Resposta Errada.");
                 agora = completo.getGanhos() / 2;
             }
-
-            completo.setGanhos(agora);
-
+            
             if (acertou == false) {
                 Fim f = new Fim();
                 f.setVisible(true);
-                this.setVisible(false);
+                this.setVisible(false);                
                 f.completo = completo;
             }
-
+            completo.setGanhos(agora);
             PerguntaDAO dao = new PerguntaDAO();
-
+            
             perguntas.remove(0);
-
+            
             if (perguntas.size() == 1 || perguntas.isEmpty()) {
                 if (clique == 3 || clique == 6 || clique == 9 || clique == 12 || clique == 13) {
                     nivel++;
@@ -496,7 +494,7 @@ public class Jogo extends javax.swing.JFrame {
                     perguntas = dao.listarNivel(nivel);
                 }
             }
-
+            
             perguntaAtual = perguntas.get(0);
             txtEnunciado.setText(perguntaAtual.getEnunciado());
             rdbA.setText(perguntaAtual.getA());
@@ -504,7 +502,7 @@ public class Jogo extends javax.swing.JFrame {
             rdbC.setText(perguntaAtual.getC());
             rdbD.setText(perguntaAtual.getD());
             lblNivel.setText(nivel.toString());
-
+            
             if (nivel == 5) {
                 errar.setText("0");
                 acertar.setText("1.000.000");
@@ -518,36 +516,41 @@ public class Jogo extends javax.swing.JFrame {
                 errar.setText(x.toString());
                 parar.setText(agora.toString());
             }
+            if (nivel == 5 && acertou == false) {
+                completo.setGanhos(0);
+            } else if (acertou == true) {
+                completo.setGanhos(agora);
+            }
             grupodebotoes.clearSelection();
         }
     }//GEN-LAST:event_botaoconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         botaocartas.setEnabled(true);
-
+        
         completo = new JogoCompleto();
         completo.setJogador(jogador);
-
+        
         lblNome.setText(jogador.getLogin());
-
+        
         if (jogador.getImagem() == null) {
             lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/semimagem.jpg")));
         } else {
             ManipularImagem.exibiImagemLabel(jogador.getImagem(), lblFoto);
         }
-
+        
         PerguntaDAO dao = new PerguntaDAO();
         premio = 15000;
         perguntas = dao.listarNivel(nivel);
         perguntaAtual = perguntas.get(0);
-
+        
         txtEnunciado.setText(perguntaAtual.getEnunciado());
         rdbA.setText(perguntaAtual.getA());
         rdbB.setText(perguntaAtual.getB());
         rdbC.setText(perguntaAtual.getC());
         rdbD.setText(perguntaAtual.getD());
         lblNivel.setText(nivel.toString());
-
+        
         errar.setText("0");
         acertar.setText(premio.toString());
         parar.setText("0");
@@ -557,7 +560,7 @@ public class Jogo extends javax.swing.JFrame {
         Audio a = new Audio();
         a.tocar("certeza2.wav");
     }//GEN-LAST:event_rdbAMouseClicked
-
+    
 
     private void rdbAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbAActionPerformed
         // TODO add your handling code here:
@@ -565,7 +568,7 @@ public class Jogo extends javax.swing.JFrame {
 
     private void botaopularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaopularActionPerformed
         perguntas.remove(0);
-
+        
         perguntaAtual = perguntas.get(0);
         txtEnunciado.setText(perguntaAtual.getEnunciado());
         rdbA.setText(perguntaAtual.getA());
@@ -573,7 +576,7 @@ public class Jogo extends javax.swing.JFrame {
         rdbC.setText(perguntaAtual.getC());
         rdbD.setText(perguntaAtual.getD());
         lblNivel.setText(nivel.toString());
-
+        
         grupodebotoes.clearSelection();
         botaopular.setEnabled(false);
     }//GEN-LAST:event_botaopularActionPerformed
@@ -590,7 +593,7 @@ public class Jogo extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         cartas(h);
     }//GEN-LAST:event_formWindowGainedFocus
-
+    
     public void cartas(Integer num) {
         switch (num) {
             case 0:
@@ -659,7 +662,7 @@ public class Jogo extends javax.swing.JFrame {
                         break;
                 }
                 break;
-
+            
         }
         botaocartas.setEnabled(cartas);
         h = 0;
@@ -679,7 +682,7 @@ public class Jogo extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
+                    
                 }
             }
         } catch (ClassNotFoundException ex) {
