@@ -111,6 +111,7 @@ public class Jogo extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
                 formWindowGainedFocus(evt);
@@ -429,92 +430,96 @@ public class Jogo extends javax.swing.JFrame {
     }//GEN-LAST:event_botaocartasActionPerformed
 
     private void botaoconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoconfirmarActionPerformed
-
-        clique++;
-
-        String op = null;
-
-        if (rdbA.isSelected() == true) {
-            op = "A";
-        } else if (rdbB.isSelected() == true) {
-            op = "B";
-        } else if (rdbC.isSelected() == true) {
-            op = "C";
-        } else if (rdbD.isSelected() == true) {
-            op = "D";
-        }
-
-        if (op.equals(perguntaAtual.getCerta())) {
-            acertou = true;
-            Audio audio = new Audio();
-            audio.tocar("certa.wav");
-            JOptionPane.showMessageDialog(rootPane, "Resposta Certa!");
-            agora = completo.getGanhos() + premio;
+        if (rdbA.isSelected() == false && rdbB.isSelected() == false && rdbC.isSelected() == false
+                && rdbD.isSelected() == false) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma opção!");
         } else {
-            acertou = false;
-            JOptionPane.showMessageDialog(rootPane, "Resposta Errada.");
-            agora = completo.getGanhos() / 2;
-        }
 
-        completo.setGanhos(agora);
+            clique++;
 
-        if (acertou == false) {
-            Fim f = new Fim();
-            f.setVisible(true);
-            this.setVisible(false);
-            f.completo = completo;
-        }
+            String op = null;
 
-        PerguntaDAO dao = new PerguntaDAO();
-
-        perguntas.remove(0);
-
-        if (perguntas.size() == 1 || perguntas.isEmpty()) {
-            if (clique == 3 || clique == 6 || clique == 9 || clique == 12 || clique == 13) {
-                nivel++;
-                if (nivel == 2) {
-                    premio = 30000;
-                } else if (nivel == 3) {
-                    premio = 50000;
-                } else if (nivel == 4) {
-                    premio = 100000;
-                } else if (nivel == 5) {
-                    premio = premio + 315000;
-                } else {
-                    Fim f = new Fim();
-                    completo.setGanhos(agora);
-                    f.completo = completo;
-                    f.setVisible(true);
-                    this.setVisible(false);
-                    return;
-                }
-                perguntas = dao.listarNivel(nivel);
+            if (rdbA.isSelected() == true) {
+                op = "A";
+            } else if (rdbB.isSelected() == true) {
+                op = "B";
+            } else if (rdbC.isSelected() == true) {
+                op = "C";
+            } else if (rdbD.isSelected() == true) {
+                op = "D";
             }
+
+            if (op.equals(perguntaAtual.getCerta())) {
+                acertou = true;
+                Audio audio = new Audio();
+                audio.tocar("certa.wav");
+                JOptionPane.showMessageDialog(rootPane, "Resposta Certa!");
+                agora = completo.getGanhos() + premio;
+            } else {
+                acertou = false;
+                JOptionPane.showMessageDialog(rootPane, "Resposta Errada.");
+                agora = completo.getGanhos() / 2;
+            }
+
+            completo.setGanhos(agora);
+
+            if (acertou == false) {
+                Fim f = new Fim();
+                f.setVisible(true);
+                this.setVisible(false);
+                f.completo = completo;
+            }
+
+            PerguntaDAO dao = new PerguntaDAO();
+
+            perguntas.remove(0);
+
+            if (perguntas.size() == 1 || perguntas.isEmpty()) {
+                if (clique == 3 || clique == 6 || clique == 9 || clique == 12 || clique == 13) {
+                    nivel++;
+                    if (nivel == 2) {
+                        premio = 30000;
+                    } else if (nivel == 3) {
+                        premio = 50000;
+                    } else if (nivel == 4) {
+                        premio = 100000;
+                    } else if (nivel == 5) {
+                        premio = premio + 315000;
+                    } else {
+                        Fim f = new Fim();
+                        completo.setGanhos(agora);
+                        f.completo = completo;
+                        f.setVisible(true);
+                        this.setVisible(false);
+                        return;
+                    }
+                    perguntas = dao.listarNivel(nivel);
+                }
+            }
+
+            perguntaAtual = perguntas.get(0);
+            txtEnunciado.setText(perguntaAtual.getEnunciado());
+            rdbA.setText(perguntaAtual.getA());
+            rdbB.setText(perguntaAtual.getB());
+            rdbC.setText(perguntaAtual.getC());
+            rdbD.setText(perguntaAtual.getD());
+            lblNivel.setText(nivel.toString());
+
+            if (nivel == 5) {
+                errar.setText("0");
+                acertar.setText("1.000.000");
+                parar.setText("0");
+                botaoparar.setEnabled(false);
+                botaopular.setEnabled(false);
+                botaocartas.setEnabled(false);
+            } else {
+                Integer x = agora / 2, y = agora + premio;
+                acertar.setText(y.toString());
+                errar.setText(x.toString());
+                parar.setText(agora.toString());
+            }
+            grupodebotoes.clearSelection();
         }
-
-        perguntaAtual = perguntas.get(0);
-        txtEnunciado.setText(perguntaAtual.getEnunciado());
-        rdbA.setText(perguntaAtual.getA());
-        rdbB.setText(perguntaAtual.getB());
-        rdbC.setText(perguntaAtual.getC());
-        rdbD.setText(perguntaAtual.getD());
-        lblNivel.setText(nivel.toString());
-
-        if (nivel == 5) {
-            errar.setText("0");
-            acertar.setText("1.000.000");
-            parar.setText("0");
-            botaoparar.setEnabled(false);
-            botaopular.setEnabled(false);
-            botaocartas.setEnabled(false);
-        } else {
-            Integer x = agora / 2, y = agora + premio;
-            acertar.setText(y.toString());
-            errar.setText(x.toString());
-            parar.setText(agora.toString());
-        }
-        grupodebotoes.clearSelection();
-
     }//GEN-LAST:event_botaoconfirmarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -524,7 +529,12 @@ public class Jogo extends javax.swing.JFrame {
         completo.setJogador(jogador);
 
         lblNome.setText(jogador.getLogin());
-        ManipularImagem.exibiImagemLabel(jogador.getImagem(), lblFoto);
+
+        if (jogador.getImagem() == null) {
+            lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/semimagem.jpg")));
+        } else {
+            ManipularImagem.exibiImagemLabel(jogador.getImagem(), lblFoto);
+        }
 
         PerguntaDAO dao = new PerguntaDAO();
         premio = 15000;
