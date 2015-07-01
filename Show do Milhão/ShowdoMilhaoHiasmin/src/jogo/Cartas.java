@@ -35,6 +35,7 @@ public class Cartas extends javax.swing.JFrame {
         bt4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         cartaslbl.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cartaslbl.setForeground(new java.awt.Color(0, 0, 153));

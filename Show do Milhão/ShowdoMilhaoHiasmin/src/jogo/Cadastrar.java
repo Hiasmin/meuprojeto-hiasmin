@@ -74,6 +74,7 @@ public class Cadastrar extends javax.swing.JFrame {
         selecionarfoto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
 
