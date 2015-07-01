@@ -40,16 +40,6 @@ public class Jogo extends javax.swing.JFrame {
         this.jogador = jogador;
     }
 
-    //static boolean cartas = false;
-    /*
-     public static boolean isCartas() {
-     return cartas;
-     }
-    
-     public static void setCartas(boolean cartas) {
-     Jogo.cartas = cartas;
-     }
-     */
     public Jogo() {
         initComponents();
         nivel = 1;
