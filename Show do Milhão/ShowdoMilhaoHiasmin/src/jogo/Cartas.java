@@ -125,7 +125,7 @@ public class Cartas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
-        Jogo.setCartas(false);
+        //Jogo.setCartas(false);
         Jogo.setH(num);
         this.dispose();
     }//GEN-LAST:event_okActionPerformed
